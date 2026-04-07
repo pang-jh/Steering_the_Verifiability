@@ -1,6 +1,4 @@
-# Minimal requirements generated from project imports
 # Python: 3.10.19
-# Project root: /mnt/sdb/pjh/Steering_the_Verifiability
 
 einops==0.8.1
 jaxtyping==0.3.3
