@@ -250,18 +250,18 @@ if __name__ == "__main__":
 
     model_path = "/model/qwen2.5-vl-7b-instruct"
 
-    train_obv = "dataset/all_data/7b/filter/pure_balance/train_obvious.jsonl"
-    train_obv_nh = "dataset/all_data/7b/filter/pure_balance/train_nh.jsonl"
-    train_elu = "dataset/all_data/7b/filter/pure_balance/train_elusive.jsonl"
-    train_elu_nh = "dataset/all_data/7b/filter/pure_balance/train_nh.jsonl"
+    train_obv = "dataset/all_data/7b/filter/split/train_obvious.jsonl"
+    train_obv_nh = "dataset/all_data/7b/filter/split/train_nh.jsonl"
+    train_elu = "dataset/all_data/7b/filter/split/train_elusive.jsonl"
+    train_elu_nh = "dataset/all_data/7b/filter/split/train_nh.jsonl"
 
-    val_obv = "dataset/all_data/7b/filter/pure_balance/val_obvious.jsonl"
-    val_elu = "dataset/all_data/7b/filter/pure_balance/val_elusive.jsonl"
-    val_nh = "dataset/all_data/7b/filter/pure_balance/val_nh.jsonl"
+    val_obv = "dataset/all_data/7b/filter/split/val_obvious.jsonl"
+    val_elu = "dataset/all_data/7b/filter/split/val_elusive.jsonl"
+    val_nh = "dataset/all_data/7b/filter/split/val_nh.jsonl"
 
-    test_obv = "dataset/all_data/7b/filter/pure_balance/test_obvious.jsonl"
-    test_elu = "dataset/all_data/7b/filter/pure_balance/test_elusive.jsonl"
-    test_nh = "dataset/all_data/7b/filter/pure_balance/test_nh.jsonl"
+    test_obv = "dataset/all_data/7b/filter/split/test_obvious.jsonl"
+    test_elu = "dataset/all_data/7b/filter/split/test_elusive.jsonl"
+    test_nh = "dataset/all_data/7b/filter/split/test_nh.jsonl"
 
 
     run_pipeline(model_path, train_obv, train_obv_nh, train_elu, train_elu_nh, val_obv, val_elu, val_nh, test_obv, test_elu, test_nh)
