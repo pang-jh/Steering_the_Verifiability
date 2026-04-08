@@ -22,7 +22,7 @@ These directions are used to steer model behavior at inference time and provide 
 We construct **HHVD**, a human-annotated benchmark for multimodal hallucination verifiability. The dataset is designed to evaluate how easily users can verify hallucinated content and supports fine-grained analysis of hallucination control in MLLMs.
 
 Get the dataset from this 
-[🤗 link](https://huggingface.co/datasets/BeEnough/HHVD), 
+[🤗 link](https://huggingface.co/datasets/BeEnough/HHVD) or 
 [🤖 link](https://www.modelscope.cn/datasets/Nothing07/HHVD)
 ## QuickStart
 ```bash
