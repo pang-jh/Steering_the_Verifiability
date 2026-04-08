@@ -25,12 +25,11 @@ if not os.path.exists(font_path):
 try:
     font_manager.fontManager.addfont(font_path)
     prop = font_manager.FontProperties(fname=font_path)
-    print(f"成功加载字体文件: {font_path}, 注册名称为: {prop.get_name()}")
     
     plt.rcParams['font.family'] = 'sans-serif'
     plt.rcParams['font.sans-serif'] = [prop.get_name(), 'Noto Sans CJK SC', 'WenQuanYi Micro Hei']
 except Exception as e:
-    print(f"加载字体失败: {e}")
+    print(f"error: {e}")
 
 plt.rcParams['axes.unicode_minus'] = False
 
@@ -97,12 +96,12 @@ for metric_info in metrics_config:
     ax_a = axes[current_row][current_col]
     ax_a.plot([d['obv_coeff'] for d in obvious_data],
               [d['obvious'][metric_key] for d in obvious_data],
-              'o-', label='显式干预', markersize=6, color=OBVIOUS_COLOR)
+              'o-', label='OHI', markersize=6, color=OBVIOUS_COLOR)
     ax_a.plot([d['elu_coeff'] for d in elusive_data],
               [d['elusive'][metric_key] for d in elusive_data],
-              's-', label='隐式干预', markersize=6, color=ELUSIVE_COLOR)
-    ax_a.set_xlabel('系数')
-    ax_a.set_ylabel(f'{metric_label} (显式测试)')
+              's-', label='EHI', markersize=6, color=ELUSIVE_COLOR)
+    ax_a.set_xlabel('Coefficient')
+    ax_a.set_ylabel(f'{metric_label} (Obvious test)')
     ax_a.legend()
     ax_a.grid(True, linestyle='--', alpha=0.6)
     v_min, v_max = y_ranges[metric_key]
@@ -118,12 +117,12 @@ for metric_info in metrics_config:
     ax_b = axes[current_row][current_col]
     ax_b.plot([d['obv_coeff'] for d in obvious_data],
               [d['obvious'][metric_key] for d in obvious_data],
-              'o-', label='显式干预', markersize=6, color=OBVIOUS_COLOR)
+              'o-', label='OHI', markersize=6, color=OBVIOUS_COLOR)
     ax_b.plot([d['elu_coeff'] for d in elusive_data],
               [d['elusive'][metric_key] for d in elusive_data],
-              's-', label='隐式干预', markersize=6, color=ELUSIVE_COLOR)
-    ax_b.set_xlabel('系数')
-    ax_b.set_ylabel(f'{metric_label} (隐式测试)')
+              's-', label='EHI', markersize=6, color=ELUSIVE_COLOR)
+    ax_b.set_xlabel('Coefficient')
+    ax_b.set_ylabel(f'{metric_label} (Elusive test)')
     ax_b.legend()
     ax_b.grid(True, linestyle='--', alpha=0.6)
     ax_b.set_ylim(v_min, v_max)
@@ -143,7 +142,6 @@ for idx in range(total_subplots_needed, total_available_subplots):
 
 plt.tight_layout()
 plt.savefig(f'{save_dir}intervention.png', dpi=300, bbox_inches='tight')
-print(f"扩展版图片已保存为 {save_dir}intervention.png，包含了所有新旧指标。")
 
 import json
 import matplotlib.pyplot as plt
@@ -160,12 +158,11 @@ if not os.path.exists(font_path):
 try:
     font_manager.fontManager.addfont(font_path)
     prop = font_manager.FontProperties(fname=font_path)
-    print(f"成功加载字体文件: {font_path}, 注册名称为: {prop.get_name()}")
     
     plt.rcParams['font.family'] = 'sans-serif'
     plt.rcParams['font.sans-serif'] = [prop.get_name(), 'Noto Sans CJK SC', 'WenQuanYi Micro Hei']
 except Exception as e:
-    print(f"加载字体失败: {e}")
+    print(f"error: {e}")
 
 plt.rcParams['axes.unicode_minus'] = False
 
@@ -210,16 +207,16 @@ for pair in comparison_pairs:
                              c=obv_coeffs, cmap=OBVIOUS_CMAP,
                              marker='o', s=100, alpha=0.7,
                              edgecolors=OBVIOUS_COLOR, linewidth=1.5,
-                             label='显式干预')
+                             label='OHI')
     scatter2_p = ax1.scatter(elu_primary_x, elu_primary_y,
                              c=elu_coeffs, cmap=ELUSIVE_CMAP,
                              marker='s', s=100, alpha=0.7,
                              edgecolors=ELUSIVE_COLOR, linewidth=1.5,
-                             label='隐式干预')
+                             label='EHI')
 
-    ax1.set_xlabel(f'{primary_metric["label"]} (显式测试集)', fontsize=12)
-    ax1.set_ylabel(f'{primary_metric["label"]} (隐式测试集)', fontsize=12)
-    ax1.set_title(f'{primary_metric["label"]}: 显式 vs 隐式测试集', fontsize=14, fontweight='bold')
+    ax1.set_xlabel(f'{primary_metric["label"]} (Obvious test set)', fontsize=12)
+    ax1.set_ylabel(f'{primary_metric["label"]} (Elusive test set)', fontsize=12)
+    ax1.set_title(f'{primary_metric["label"]}: Obvious vs Elusive test set', fontsize=14, fontweight='bold')
     ax1.legend(fontsize=11, loc='best')
     ax1.grid(True, alpha=0.3)
 
@@ -230,7 +227,7 @@ for pair in comparison_pairs:
     ax1.plot([lim_min, lim_max], [lim_min, lim_max], 'k--', alpha=0.5, linewidth=1, label='y=x')
 
     cbar1 = plt.colorbar(scatter1_p, ax=ax1, pad=0.02)
-    cbar1.set_label('显式系数（颜色越深干预越强）', fontsize=10)
+    cbar1.set_label('Obvious Coefficient (Darker Colors Indicate Stronger Interventions)', fontsize=10)
 
     ax2 = axes[1]
 
@@ -244,16 +241,16 @@ for pair in comparison_pairs:
                                c=obv_coeffs, cmap=OBVIOUS_CMAP,
                                marker='o', s=100, alpha=0.7,
                                edgecolors=OBVIOUS_COLOR, linewidth=1.5,
-                               label='显式干预')
+                               label='OHI')
     scatter4_pct = ax2.scatter(elu_percentage_x, elu_percentage_y,
                                c=elu_coeffs, cmap=ELUSIVE_CMAP,
                                marker='s', s=100, alpha=0.7,
                                edgecolors=ELUSIVE_COLOR, linewidth=1.5,
-                               label='隐式干预')
+                               label='EHI')
 
-    ax2.set_xlabel(f'{percentage_metric["label"]} (显式测试集)', fontsize=12)
-    ax2.set_ylabel(f'{percentage_metric["label"]} (隐式测试集)', fontsize=12)
-    ax2.set_title(f'{percentage_metric["label"]}: 显式 vs 隐式测试集', fontsize=14, fontweight='bold')
+    ax2.set_xlabel(f'{percentage_metric["label"]} (Obvious test set)', fontsize=12)
+    ax2.set_ylabel(f'{percentage_metric["label"]} (Elusive test set)', fontsize=12)
+    ax2.set_title(f'{percentage_metric["label"]}: Obvious vs Elusive test set', fontsize=14, fontweight='bold')
     ax2.legend(fontsize=11, loc='best')
     ax2.grid(True, alpha=0.3)
 
@@ -264,12 +261,9 @@ for pair in comparison_pairs:
     ax2.plot([lim_min_pct, lim_max_pct], [lim_min_pct, lim_max_pct], 'k--', alpha=0.5, linewidth=1, label='y=x')
 
     cbar2 = plt.colorbar(scatter3_pct, ax=ax2, pad=0.02)
-    cbar2.set_label('显式系数（颜色越深干预越强）', fontsize=10)
+    cbar2.set_label('Elusive Coefficient (Darker Colors Indicate Stronger Interventions)', fontsize=10)
 
     plt.tight_layout()
     filename = f'{save_dir}scatter_{primary_metric["key"]}_vs_{percentage_metric["key"]}.png'
     plt.savefig(filename, dpi=300, bbox_inches='tight')
-    print(f"散点图对比已保存为 {filename}")
     plt.close()
-
-print("\n三组指标对比的散点图均已生成。")

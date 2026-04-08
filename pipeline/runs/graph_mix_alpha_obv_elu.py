@@ -88,7 +88,6 @@ def build_case_candidates(rows: List[Dict[str, Any]], topk: int = 5) -> Dict[str
         },
     }
 
-    # 1) low alpha: 隐式集里 intervention 幻觉率仍高（认知风险）
     low_per, low_out = load_logits_and_outputs(
         safe_get(low, ["paths", "elusive_logits"]),
         safe_get(low, ["paths", "elusive_output"]),
@@ -107,7 +106,6 @@ def build_case_candidates(rows: List[Dict[str, Any]], topk: int = 5) -> Dict[str
         )
     cases["low_alpha"]["samples"] = topk_by_key(low_items, "score", topk, reverse=True)
 
-    # 2) mid alpha: 选“平衡”样本（低HR + 不过度升高不确定）
     mid_per, mid_out = load_logits_and_outputs(
         safe_get(mid, ["paths", "elusive_logits"]),
         safe_get(mid, ["paths", "elusive_output"]),
@@ -163,7 +161,6 @@ def plot_alpha_curve(
     y_obv_hr = [safe_get(r, ["obvious", "intervention_mean_hr"], None) for r in rows]
     y_elu_hr = [safe_get(r, ["elusive", "intervention_mean_hr"], None) for r in rows]
 
-    # 丢弃缺失值对应点
     x_obv, y_obv = [], []
     x_elu, y_elu = [], []
     for x, y in zip(x_alpha, y_obv_hr):
