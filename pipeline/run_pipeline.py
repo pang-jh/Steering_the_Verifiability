@@ -34,7 +34,7 @@ def _read_aggregate_metrics(path):
             "mean_unk_tendency_change_percentage": agg.get("mean_unk_tendency_change_percentage"),
         }
     except FileNotFoundError:
-        print(f"[warn] 未找到指标文件: {path}")
+        print(f"[warn] error: {path}")
         return {}
     
 
@@ -181,7 +181,7 @@ def run_pipeline(model_path, train_obv, train_obv_nh, train_elu, train_elu_nh, v
         )
 
         output_file_obv = os.path.join(cfg.artifact_path(), f"test_obvious.jsonl")
-        print(f"双探针干预*显式幻觉*测试集，输出到: {output_file_obv}")
+        print(f"Obvious test: {output_file_obv}")
         generate_and_save_completions_for_dataset(
             cfg, model_base, processor,
             dual_ablation_fwd_pre_hooks, dual_ablation_fwd_hooks,
@@ -189,7 +189,7 @@ def run_pipeline(model_path, train_obv, train_obv_nh, train_elu, train_elu_nh, v
         )
         
         output_file_elu = os.path.join(cfg.artifact_path(), f"test_elusive.jsonl")
-        print(f"双探针干预*隐式幻觉*测试集，输出到: {output_file_elu}")
+        print(f"Elusive test: {output_file_elu}")
         generate_and_save_completions_for_dataset(
             cfg, model_base, processor,
             dual_ablation_fwd_pre_hooks, dual_ablation_fwd_hooks,
@@ -197,7 +197,7 @@ def run_pipeline(model_path, train_obv, train_obv_nh, train_elu, train_elu_nh, v
         )
 
         output_file_nh = os.path.join(cfg.artifact_path(), "test_nh_elusive.jsonl")
-        print(f"双探针干预*无幻觉*测试集，输出到: {output_file_nh}")
+        print(f"Non-Hallucination test: {output_file_nh}")
         generate_and_save_completions_for_dataset(
             cfg, model_base, processor,
             dual_ablation_fwd_pre_hooks, dual_ablation_fwd_hooks,
@@ -233,7 +233,7 @@ def run_pipeline(model_path, train_obv, train_obv_nh, train_elu, train_elu_nh, v
         )
 
         output_file_obv = os.path.join(cfg.artifact_path(), f"test_obvious.jsonl")
-        print(f"双探针干预*显式幻觉*测试集，输出到: {output_file_obv}")
+        print(f"Obvious test: {output_file_obv}")
         generate_and_save_completions_for_dataset(
             cfg, model_base, processor,
             dual_ablation_fwd_pre_hooks, dual_ablation_fwd_hooks,
@@ -241,7 +241,7 @@ def run_pipeline(model_path, train_obv, train_obv_nh, train_elu, train_elu_nh, v
         )
         
         output_file_elu = os.path.join(cfg.artifact_path(), f"test_elusive.jsonl")
-        print(f"双探针干预*隐式幻觉*测试集，输出到: {output_file_elu}")
+        print(f"Elusive test: {output_file_elu}")
         generate_and_save_completions_for_dataset(
             cfg, model_base, processor,
             dual_ablation_fwd_pre_hooks, dual_ablation_fwd_hooks,
@@ -249,7 +249,7 @@ def run_pipeline(model_path, train_obv, train_obv_nh, train_elu, train_elu_nh, v
         )
 
         output_file_nh = os.path.join(cfg.artifact_path(), "test_nh_elusive.jsonl")
-        print(f"双探针干预*无幻觉*测试集，输出到: {output_file_nh}")
+        print(f"Non-Hallucination test: {output_file_nh}")
         generate_and_save_completions_for_dataset(
             cfg, model_base, processor,
             dual_ablation_fwd_pre_hooks, dual_ablation_fwd_hooks,
@@ -276,7 +276,7 @@ def run_pipeline(model_path, train_obv, train_obv_nh, train_elu, train_elu_nh, v
 
 if __name__ == "__main__":
 
-    model_path = "/model/qwen2.5-vl-7b-instruct"
+    model_path = "model/qwen2.5-vl-7b-instruct"
 
     train_obv = "dataset/all_data/7b/filter/split/train_obvious.jsonl"
     train_obv_nh = "dataset/all_data/7b/filter/split/train_nh.jsonl"
