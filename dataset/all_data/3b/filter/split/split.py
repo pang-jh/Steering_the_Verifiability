@@ -61,21 +61,21 @@ def collect_nh_balanced_by_images(groups, images, rng):
     return out
 
 def main():
-    obvious_path = "/dataset/all_data/3b/filter/obvious_filter.jsonl"
-    elusive_path = "/dataset/all_data/3b/filter/elusive_filter.jsonl"
-    nh_path = "/dataset/all_data/3b/filter/nh_filter.jsonl"
+    obvious_path = "dataset/all_data/3b/filter/obvious_filter.jsonl"
+    elusive_path = "dataset/all_data/3b/filter/elusive_filter.jsonl"
+    nh_path = "dataset/all_data/3b/filter/nh_filter.jsonl"
 
-    out_train_obvious = "/dataset/all_data/3b/filter/pure_balance/train_obvious.jsonl"
-    out_train_elusive = "/dataset/all_data/3b/filter/pure_balance/train_elusive.jsonl"
-    out_train_nh = "/dataset/all_data/3b/filter/pure_balance/train_nh_full.jsonl"
+    out_train_obvious = "dataset/all_data/3b/filter/split/train_obvious.jsonl"
+    out_train_elusive = "dataset/all_data/3b/filter/split/train_elusive.jsonl"
+    out_train_nh = "dataset/all_data/3b/filter/split/train_nh_full.jsonl"
 
-    out_val_obvious = "/dataset/all_data/3b/filter/pure_balance/val_obvious.jsonl"
-    out_val_elusive = "/dataset/all_data/3b/filter/pure_balance/val_elusive.jsonl"
-    out_val_nh = "/dataset/all_data/3b/filter/pure_balance/val_nh_full.jsonl"
+    out_val_obvious = "dataset/all_data/3b/filter/split/val_obvious.jsonl"
+    out_val_elusive = "dataset/all_data/3b/filter/split/val_elusive.jsonl"
+    out_val_nh = "dataset/all_data/3b/filter/split/val_nh_full.jsonl"
 
-    out_test_obvious = "/dataset/all_data/3b/filter/pure_balance/test_obvious.jsonl"
-    out_test_elusive = "/dataset/all_data/3b/filter/pure_balance/test_elusive.jsonl"
-    out_test_nh = "/dataset/all_data/3b/filter/pure_balance/test_nh_full.jsonl"
+    out_test_obvious = "dataset/all_data/3b/filter/split/test_obvious.jsonl"
+    out_test_elusive = "dataset/all_data/3b/filter/split/test_elusive.jsonl"
+    out_test_nh = "dataset/all_data/3b/filter/split/test_nh_full.jsonl"
 
     rng = random.Random(42)
 
