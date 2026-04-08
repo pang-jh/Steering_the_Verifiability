@@ -24,7 +24,7 @@ We construct **HHVD**, a human-annotated benchmark for multimodal hallucination 
 Get the dataset from this 
 [🤗 link](https://huggingface.co/datasets/BeEnough/HHVD) or 
 [🤖 link](https://www.modelscope.cn/datasets/Nothing07/HHVD)
-## QuickStart
+## Quick Start
 ```bash
 git clone https://github.com/pang-jh/Steering_the_Verifiability.git
 cd Steering_the_Verifiability
@@ -35,3 +35,11 @@ pip install -r requirements.txt
 ```bash
 python3 -m pipeline.run_pipeline
 ```
+
+## Main Results
+The pipeline performs the following steps:
+1. Extract candiate directions
+    - Artifacts will be saved in `pipeline/runs/{model_alias}/generate_directions`
+2. Select the most effective direction
+    - Artifacts will be saved in `pipeline/runs/{model_alias}/select_direction`
+    - The selected direction will be saved as `pipeline/runs/{model_alias}/direction.pt`
