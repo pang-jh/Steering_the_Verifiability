@@ -87,7 +87,7 @@ def main():
     train_ratio = 0.52
     val_ratio = 0.22
     test_ratio = 0.26
-    assert abs(train_ratio + val_ratio + test_ratio - 1.0) < 1e-8, "比例之和必须为1"
+    assert abs(train_ratio + val_ratio + test_ratio - 1.0) < 1e-8, "Ratios must sum to 1"
 
     all_images = sorted(set(obvious_groups) | set(elusive_groups) | set(nh_groups))
     rng.shuffle(all_images)
@@ -141,9 +141,6 @@ def main():
     print(f"Val obvious: {len(val_obvious_items)}, Val elusive: {len(val_elusive_items)}, Val nh: {len(val_nh_items)}")
     print(f"Test obvious: {len(test_obvious_items)}, Test elusive: {len(test_elusive_items)}, Test nh: {len(test_nh_items)}")
 
-    print(f"Train nh balance(no_no:yes_yes) = {tr_no_no}:{tr_yes_yes}")
-    print(f"Val nh balance(no_no:yes_yes) = {v_no_no}:{v_yes_yes}")
-    print(f"Test nh balance(no_no:yes_yes) = {t_no_no}:{t_yes_yes}")
 
 if __name__ == "__main__":
     main()
