@@ -43,3 +43,20 @@ The pipeline performs the following steps:
 2. Select the most effective direction
     - Artifacts will be saved in `pipeline/runs/{model_alias}/select_direction`
     - The selected direction will be saved as `pipeline/runs/{model_alias}/direction.pt`
+
+
+## Citation
+
+If you find our work useful, please cite our paper:
+
+```bibtex
+@misc{pang2026steeringverifiabilitymultimodalai,
+      title={Steering the Verifiability of Multimodal AI Hallucinations}, 
+      author={Jianhong Pang and Ruoxi Cheng and Ziyi Ye and Xingjun Ma and Zuxuan Wu and Xuanjing Huang and Yu-Gang Jiang},
+      year={2026},
+      eprint={2604.06714},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2604.06714}, 
+}
+```
