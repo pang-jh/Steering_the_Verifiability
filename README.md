@@ -50,13 +50,10 @@ The pipeline performs the following steps:
 If you find our work useful, please cite our paper:
 
 ```bibtex
-@misc{pang2026steeringverifiabilitymultimodalai,
-      title={Steering the Verifiability of Multimodal AI Hallucinations}, 
-      author={Jianhong Pang and Ruoxi Cheng and Ziyi Ye and Xingjun Ma and Zuxuan Wu and Xuanjing Huang and Yu-Gang Jiang},
-      year={2026},
-      eprint={2604.06714},
-      archivePrefix={arXiv},
-      primaryClass={cs.AI},
-      url={https://arxiv.org/abs/2604.06714}, 
+@article{pang2026steering,
+  title={Steering the Verifiability of Multimodal AI Hallucinations},
+  author={Pang, Jianhong and Cheng, Ruoxi and Ye, Ziyi and Ma, Xingjun and Wu, Zuxuan and Huang, Xuanjing and Jiang, Yu-Gang},
+  journal={arXiv preprint arXiv:2604.06714},
+  year={2026}
 }
 ```
